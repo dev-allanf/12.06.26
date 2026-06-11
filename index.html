@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caça ao Tesouro ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>❤️ Caça ao Tesouro ❤️</h1>
+
+    <p>
+        Prepare-se para descobrir alguns segredos...
+    </p>
+
+    <div id="jogo">
+
+    <button id="btnComecar" onclick="iniciar()">
+        ❤️ Começar a Caça ao Tesouro ❤️
+    </button>
+
+    <div id="areaPergunta" style="display:none;">
+
+        <h2 id="pergunta"></h2>
+
+        <input
+            type="text"
+            id="resposta"
+            placeholder="Digite sua resposta">
+
+        <button onclick="verificar()">
+            Confirmar
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const pistas = [
+
+{
+pergunta:
+"Qual é o nome da pessoa que te ama muito?",
+resposta:
+"allan"
+},
+
+{
+pergunta:
+"Quando foi nosso primeiro beijo (selinho não conta) dd/mm/aa",
+resposta:
+"10/09/23"
+},
+
+{
+pergunta:
+"Qual dia que te pedi em namoro?",
+resposta:
+"26/11/23"
+},
+
+{
+pergunta:
+"Qual seleção vamos assistir hoje na copa?",
+resposta:
+"brasil"
+}
+
+];
+
+let etapa = 0;
+
+function iniciar(){
+
+    etapa = 0;
+
+    document.getElementById("btnComecar")
+    .style.display = "none";
+
+    document.getElementById("areaPergunta")
+    .style.display = "block";
+
+    document.getElementById("pergunta")
+    .innerHTML =
+    pistas[0].pergunta;
+
+}
+
+function verificar(){
+
+const entrada =
+document.getElementById("resposta")
+.value
+.toLowerCase()
+.trim();
+
+if(
+entrada ==
+pistas[etapa].resposta
+){
+
+etapa++;
+
+document.getElementById("resposta")
+.value = "";
+
+if(
+etapa <
+pistas.length
+){
+
+document.getElementById("pergunta")
+.innerHTML =
+pistas[etapa].pergunta;
+
+}else{
+
+document.querySelector(".container").innerHTML =
+
+`
+<h1>❤️ Parabéns Meu Amor ❤️</h1>
+
+<p>
+Você completou a caça ao tesouro!
+</p>
+
+<h2>🎁 Seus presentes são:</h2>
+
+<h3>Uma camisa do Brasil</h3>
+
+<h3>🍣 Sushi para comemorarmos juntos</h3>
+
+<br>
+
+<p>
+Esses presentes são apenas uma pequena forma de demonstrar o quanto você é especial para mim.
+</p>
+
+<p>
+Obrigado por todos os momentos, risadas, conversas e por fazer meus dias mais felizes.
+</p>
+
+<h2>❤️ Eu te amo ❤️</h2>
+`;
+
+}
+
+}else{
+
+alert("Resposta errada ❤️");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
